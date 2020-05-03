@@ -1,4 +1,4 @@
-### Deploying Django application in AWS EC2 instance with Docker
+### Deploying Django application to AWS EC2 instance with Docker
 
 In AWS we have several ways to deploy Django (and not Django applicaions) with Docker. We can use ECS or EKS clusters. If we don't have one ECS or Kubernetes cluster up and running, maybe it can be complicated. Today I want to show how deploy one Django application in production mode within a EC2 host. Let's start.
 
