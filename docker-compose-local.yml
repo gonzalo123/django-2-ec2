@@ -1,0 +1,21 @@
+version: '3.3'
+services:
+  web:
+    image: ec2-web:latest
+    command: /bin/bash ./docker-entrypoint.sh
+    environment:
+      DEBUG: 'True'
+    volumes:
+      - static_volume:/src/staticfiles
+  nginx:
+    image: ec2-nginx:latest
+    volumes:
+      - static_volume:/src/staticfiles:ro
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+volumes:
+  static_volume:
+
+

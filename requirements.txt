@@ -1,0 +1,15 @@
+asgiref==3.2.7
+botocore==1.16.0
+Django==3.0.5
+docutils==0.15.2
+get-docker-secret==1.0.1
+gunicorn==20.0.4
+jmespath==0.9.5
+JSON-log-formatter==0.3.0
+python-dateutil==2.8.1
+pytz==2020.1
+s3transfer==0.3.3
+six==1.14.0
+sqlparse==0.3.1
+termcolor==1.1.0
+urllib3==1.25.9

@@ -1,0 +1,4 @@
+/.env
+/deploy.env
+db.sqlite3
+/docker-compose-pro.yml

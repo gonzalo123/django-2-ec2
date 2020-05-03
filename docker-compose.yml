@@ -1,0 +1,43 @@
+version: '3.8'
+services:
+  web:
+    image: 99999999999.dkr.ecr.eu-central-1.amazonaws.com/ec2-web:latest
+    command: /bin/bash ./docker-entrypoint.sh
+    environment:
+      DEBUG: 'False'
+    secrets:
+      - ec2.supersecret
+    deploy:
+      replicas: 1
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: /projects/ec2
+        awslogs-region: eu-central-1
+        awslogs-stream: app
+    volumes:
+      - static_volume:/src/staticfiles
+  nginx:
+    image: 99999999999.dkr.ecr.eu-central-1.amazonaws.com/ec2-nginx:latest
+    deploy:
+      replicas: 1
+    logging:
+      driver: awslogs
+      options:
+        awslogs-group: /projects/ec2
+        awslogs-region: eu-central-1
+        awslogs-stream: nginx
+    volumes:
+      - static_volume:/src/staticfiles:ro
+    ports:
+      - 8000:80
+    depends_on:
+      - web
+volumes:
+  static_volume:
+
+secrets:
+  ec2.supersecret:
+    external: true
+
+
